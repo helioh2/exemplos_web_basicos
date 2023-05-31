@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+
+    <style>
+
+        body {
+            background-color: beige;
+        }
+
+        .menu {
+            background-color: aqua;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #p1 {
+            background-color: blue;
+        }
+
+        #p2 {
+            text-align: center;
+        }
+
+        #menu1 {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="menu" id="menu1">
+        <ul>
+            <li><a href="home.html">Página principal</a></li>
+            <li><a href="fotos.html">Fotos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+        </ul>
+    </div>
+
+    <div class="menu" id="menu2">
+        <ul>
+            <li><a href="home.html">Curtidas</a></li>
+            <li><a href="fotos.html">Comentarios</a></li>
+            <li><a href="videos.html">Posts</a></li>
+        </ul>
+    </div>
+
+    <div style="font-family: 'Courier New', Courier, monospace;">
+        <p id="p1">TEXTO</p>
+        <p id="p2">TEXTO 2</p>
+    </div>
+
+    <span id="botao_vermelho" style="padding:20px;background-color:red;">BOTAO DE MENTIRA</span>
+
+    <button onclick="apagaTodosMenus();">APAGAR MENU</button>
+
+    <button onclick="mudaCorFonteDosMenus();">MUDAR FONTE DOS MENUS</button>
+
+    <p style="background-color: blue;"> ABobrinha <span style="padding:10px; color:white"><b>abobrinha</b></span> abobrinha </p>
+
+    <img class="imagem_lampada" 
+        src="./images/apagada.png" 
+        alt="lampada" 
+        width="50%" 
+        height="70%" 
+    />
+
+    <button onclick="interruptor();">Acende/Apaga</button>
+
+    <script>
+        // alert("OLA MUNDO");
+
+        let acesa = false;
+
+        function apagaTodosMenus() {
+            let elementos = document.getElementsByClassName("menu");
+            console.log(elementos);
+            for (elemento of elementos) {
+                console.log(elemento.innerHTML);
+                elemento.innerHTML = "MUDOU VARIOS";
+            }
+        }
+
+        function apagaMenu1() {
+            let elemento = document.getElementById("menu1");
+            console.log(elemento.innerHTML)
+            
+            elemento.innerHTML = "MUDOU!!";
+        }
+
+        function mudaCorFonteDosMenus() {
+            let elementos = document.querySelectorAll(".menu");
+            for (elemento of elementos) {
+                elemento.style["background-color"] = "red";
+            }
+        }
+
+        const interruptor = () => {
+            let imagem = document.querySelector(".imagem_lampada");
+            if (!acesa) {
+                acesa = true;            
+                imagem.src = "./images/acesa.png";
+                // imagem.width = "200%";
+                // imagem.height = "300%";
+            } else {
+                acesa = false;
+                imagem.src = "./images/apagada.png";
+            }
+        }
+
+
+        let x = document.getElementById("botao_vermelho");
+        let anterior = x.innerHTML;
+        x.addEventListener("mouseenter", () => {
+            x.innerHTML = "OLÁ";
+        })
+
+        x.addEventListener("mouseleave", () => {
+            x.innerHTML = anterior;
+        })
+
+    </script>
+    
+</body>
+</html>
